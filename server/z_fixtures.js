@@ -1,0 +1,1 @@
+if (Tickets.find().count() === 0) {}
