@@ -1,14 +1,66 @@
 <template name="tickets">
-<a href="{{pathFor 'addTicket'}}" class="btn btn-primary">Add Ticket</a>
+{{> addTicketDialog}}
+<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#add-ticket-modal">Add Ticket</a>
 <h1>Tickets List</h1>
+<ul class="list-group">
+    {{#each tickets}}
+    {{> ticketListItem}}
+    {{/each}}
+</ul>
 </template>
 
-<template name="addTicket">
-<a href="{{pathFor 'tickets'}}" class="btn btn-primary">List Tickets</a>
-<h1>Add Ticket</h1>
+
+
+<template name="ticketListItem">
+<li class="list-group-item">
+    <a href="{{pathFor 'viewTicket' _id=this._id}}" style="text-decoration: none;">
+        {{summary}}
+        <span class="pull-right" style="color: #aaa">Last Updated: {{dateText this.updated}}</span>
+    </a>
+</li>
 </template>
+
+
 
 <template name="viewTicket">
+{{> addTicketDialog}}
 <a href="{{pathFor 'tickets'}}" class="btn btn-primary">List Tickets</a>
+<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#add-ticket-modal">Add Ticket</a>
 <h1>View Ticket</h1>
+Submitted: {{dateText this.submitted}}<br />
+Updated: {{dateText this.updated}}<br />
+Summary: <a href="#" id="summary" data-value="{{summary}}"></a><br />
+Description:
+<p id="description" data-value="{{description}}"></p>
+</template>
+
+
+
+<template name="addTicketDialog">
+<div class="modal fade" id="add-ticket-modal" tabindex="-1" role="dialog" aria-labelledby="add-ticket-modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h1>Add Ticket</h1>
+            </div>
+                <form role="form" name="add-ticket" class="add-ticket">
+            <div class="modal-body">
+                    <div class="controls form-group">
+                        <label class="control-label" for="summary">Summary</label>
+                        <input name="summary" type="text" value="" placeholder="Short Summary..." class="form-control">
+                    <div class="controls form-group">
+                    </div>
+                        <label for="description">Description</label>
+                        <textarea name="description" class="form-control" placeholder="Detailed Description..." maxlength="500"></textarea>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a>
+                <button type="submit" class="btn btn-primary save">Save</button>
+            </div>
+                </form>
+        </div>
+    </div>
+</div>
 </template>
