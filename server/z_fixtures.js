@@ -1,6 +1,6 @@
-if (Tickets.find().count() === 0) {
+var now = new Date().getTime();
 
-    var now = new Date().getTime();
+if (Tickets.find().count() === 0) {
 
     Tickets.insert({
         summary: "Ticket 1",
