@@ -1,12 +1,8 @@
 <template name="layout">
-  {{!-- {{> header}}
-  <div class="container">
-      {{> alerts}}
-  </div> --}}
-  <br />
-  <br />
+  {{> header}}
   <div class="container content">
+    {{> alerts}}
     {{> yield}}
   </div>
-  {{!-- {{> footer}} --}}
+  {{> footer}}
 </template>

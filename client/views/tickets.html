@@ -1,12 +1,15 @@
 <template name="tickets">
-{{> addTicketDialog}}
-<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#add-ticket-modal">Add Ticket</a>
-<h1>Tickets List</h1>
-<ul class="list-group">
-    {{#each tickets}}
-    {{> ticketListItem}}
-    {{/each}}
-</ul>
+    {{> addTicketDialog}}
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <h1>Tickets List</h1>
+            <ul class="list-group">
+                {{#each tickets}}
+                {{> ticketListItem}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
 </template>
 
 
@@ -23,15 +26,17 @@
 
 
 <template name="viewTicket">
-{{> addTicketDialog}}
-<a href="{{pathFor 'tickets'}}" class="btn btn-primary">List Tickets</a>
-<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#add-ticket-modal">Add Ticket</a>
-<h1>View Ticket</h1>
-Submitted: {{dateText this.submitted}}<br />
-Updated: {{dateText this.updated}}<br />
-Summary: <a href="#" id="summary" data-value="{{summary}}"></a><br />
-Description:
-<p id="description" data-value="{{description}}"></p>
+    {{> addTicketDialog}}
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <h1>View Ticket</h1>
+            Submitted: {{dateText this.submitted}}<br />
+            Updated: {{dateText this.updated}}<br />
+            Summary: <a href="#" id="summary" data-value="{{summary}}"></a><br />
+            Description:
+            <p id="description" data-value="{{description}}"></p>
+        </div>
+    </div>
 </template>
 
 
