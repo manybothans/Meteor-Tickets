@@ -1,9 +1,14 @@
-Meteor.publish('tickets', function(id) {
+Meteor.publish('tickets', function() {
     return Tickets.find();
 });
-Meteor.publish('notes', function(id) {
-    return Notes.find();
+Meteor.publish('singleTicket', function(ticketId) {
+    return Tickets.find(ticketId);
 });
-Meteor.publish('statuses', function(id) {
+Meteor.publish('notes', function(ticketId) {
+    return Notes.find({
+    	ticketId: ticketId
+    });
+});
+Meteor.publish('statuses', function() {
     return Statuses.find();
 });

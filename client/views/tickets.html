@@ -1,5 +1,4 @@
 <template name="tickets">
-    {{> addTicketDialog}}
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
             <h1>Tickets List</h1>
@@ -18,7 +17,7 @@
 <li class="list-group-item">
     <a href="{{pathFor 'viewTicket' _id=this._id}}" style="text-decoration: none;">
         {{summary}}
-        <span class="pull-right" style="color: #aaa">Last Updated: {{dateText this.updated}}</span>
+        <span class="pull-right text-muted">Last Updated: {{dateText this.updated}}</span>
     </a>
 </li>
 </template>
@@ -26,15 +25,14 @@
 
 
 <template name="viewTicket">
-    {{> addTicketDialog}}
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
             <h1>View Ticket</h1>
             Submitted: {{dateText this.submitted}}<br />
             Updated: {{dateText this.updated}}<br />
-            Summary: <a href="#" id="summary" data-value="{{summary}}"></a><br />
+            Summary: <a href="#" id="summary" data-value="{{summary}}">{{summary}}</a><br />
             Description:
-            <p id="description" data-value="{{description}}"></p>
+            <p id="description" data-value="{{description}}">{{description}}</p>
         </div>
     </div>
 </template>
